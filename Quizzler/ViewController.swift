@@ -57,7 +57,7 @@ class ViewController: UIViewController {
             print(questionIndex, allQuestions.list.count)
         } else {
 
-            let alert = UIAlertController(title: "Awesome", message: "You've finished all the questions, do you want to start over?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Awesome", message: "You've finished all the questions with a score of \(score), do you want to start over?", preferredStyle: .alert)
             let restartAction = UIAlertAction(title: "Restart", style: .default, handler: { (UIAlertAction) in
                 self.startOver()
             })
@@ -74,10 +74,10 @@ class ViewController: UIViewController {
         let correctAnswer = allQuestions.list[questionIndex].answer
         
         if correctAnswer == pickedAnswer {
-            print("good")
+            ProgressHUD.showSuccess("correct!")
             score = score + 1
         } else {
-            print("bad")
+            ProgressHUD.showError("wrong!")
         }
         
         nextQuestion()
